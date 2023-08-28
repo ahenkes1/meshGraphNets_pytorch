@@ -11,7 +11,7 @@ dataset_dir = "dataset/cylinder_flow/h5/"
 batch_size = 8
 noise_std = 2e-2
 
-print_batch = 10
+print_batch = 1
 save_batch = 200
 
 
@@ -22,7 +22,7 @@ simulator = Simulator(
     edge_input_size=3,
     device=device,
 )
-optimizer = torch.optim.Adam(simulator.parameters(), lr=1e-4)
+optimizer = torch.optim.AdamW(simulator.parameters(), lr=3e-5)
 print("Optimizer initialized")
 
 

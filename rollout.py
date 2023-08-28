@@ -93,7 +93,7 @@ if __name__ == '__main__':
     simulator.load_checkpoint()
     simulator.eval()
 
-    dataset_dir = "/home/jlx/dataset/data"
+    dataset_dir = "./dataset/cylinder_flow/h5/"
     dataset = FPC_ROLLOUT(dataset_dir, split=args.test_split)
     transformer = T.Compose([T.FaceToEdge(), T.Cartesian(norm=False), T.Distance(norm=False)])
     test_loader = DataLoader(dataset=dataset, batch_size=1)
