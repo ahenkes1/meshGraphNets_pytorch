@@ -30,7 +30,8 @@ def train(model: Simulator, dataloader, optimizer):
     """Train."""
     for batch_index, graph in enumerate(dataloader):
         graph = transformer(graph)
-        graph = graph.cuda()
+        if torch.cuda.is_available():
+            graph = graph.cuda()
 
         node_type = graph.x[:, 0]  # "node_type, cur_v, pressure, time"
         velocity_sequence_noise = get_velocity_noise(
