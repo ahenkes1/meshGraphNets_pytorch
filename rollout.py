@@ -28,7 +28,8 @@ parser.add_argument("--rollout_num", type=int, default=1)
 args = parser.parse_args()
 
 # gpu devices
-torch.cuda.set_device(args.gpu)
+if torch.cuda.is_available():
+	torch.cuda.set_device(args.gpu)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
@@ -39,7 +40,7 @@ def rollout_error(predicteds, targets):
     loss = np.sqrt(np.cumsum(np.mean(squared_diff, axis=1), axis=0)/np.arange(1, number_len+1))
 
     for show_step in range(0, 1000000, 50):
-        if show_step <number_len:
+        if show_step < number_len:
             print('testing rmse  @ step %d loss: %.2e'%(show_step, loss[show_step]))
         else: break
 
@@ -59,7 +60,8 @@ def rollout(model, dataloader, rollout_index=1):
     for graph in tqdm(dataloader, total=600):
 
         graph = transformer(graph)
-        graph = graph.cuda()
+        if torch.cuda.is_available():
+	        graph = graph.cuda()
 
         if mask is None:
             node_type = graph.x[:, 0]
