@@ -19,3 +19,4 @@ dataset/cylinder_flow/
 modulus-launch/
 .venv/
 raw_dataset/
+load_modules.sh
