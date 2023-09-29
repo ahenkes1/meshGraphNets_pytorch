@@ -10,6 +10,7 @@ import torch_geometric.transforms as T
 dataset_dir = "dataset/cylinder_flow/h5/"
 batch_size = 8
 noise_std = 2e-2
+epochs = 1
 
 print_batch = 1
 save_batch = 200
@@ -57,7 +58,7 @@ def train(model: Simulator, dataloader, optimizer):
 
 
 if __name__ == "__main__":
-    dataset_fpc = FPC(dataset_dir=dataset_dir, split="train", max_epochs=50)
+    dataset_fpc = FPC(dataset_dir=dataset_dir, split="train", max_epochs=epochs)
     train_loader = DataLoader(
         dataset=dataset_fpc, batch_size=batch_size, num_workers=4
     )
