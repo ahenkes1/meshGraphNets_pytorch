@@ -6,10 +6,10 @@
 #SBATCH --error=err.log
 #SBATCH --nodes=1
 #SBATCH --ntasks=1 
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 
 #SBATCH --cpus-per-task=2
-#SBATCH --mem-per-cpu=16G
+#SBATCH --mem-per-cpu=4G
 #SBATCH --gpus=gtx_1080_ti:1
 
 
