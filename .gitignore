@@ -20,3 +20,7 @@ modulus-launch/
 .venv/
 raw_dataset/
 load_modules.sh
+.train.py.swp
+__USAGE_RULES__
+error_file
+output_file
