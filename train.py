@@ -11,6 +11,7 @@ dataset_dir = "dataset/cylinder_flow/h5/"
 batch_size = 1
 noise_std = 2e-2
 epochs = 1
+worker = 4
 
 print_batch = 1
 save_batch = 200
@@ -60,7 +61,7 @@ def train(model: Simulator, dataloader, optimizer):
 if __name__ == "__main__":
     dataset_fpc = FPC(dataset_dir=dataset_dir, split="train", max_epochs=epochs)
     train_loader = DataLoader(
-        dataset=dataset_fpc, batch_size=batch_size, num_workers=32
+        dataset=dataset_fpc, batch_size=batch_size, num_workers=worker
     )
     transformer = T.Compose(
         [T.FaceToEdge(), T.Cartesian(norm=False), T.Distance(norm=False)]
