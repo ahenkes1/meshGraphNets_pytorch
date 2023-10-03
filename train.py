@@ -8,10 +8,10 @@ from torch_geometric.loader import DataLoader
 import torch_geometric.transforms as T
 
 dataset_dir = "dataset/cylinder_flow/h5/"
-batch_size = 1
+batch_size = 8
 noise_std = 2e-2
 epochs = 1
-worker = 4
+worker = 2
 
 print_batch = 1
 save_batch = 200
