@@ -8,9 +8,9 @@ from torch_geometric.loader import DataLoader
 import torch_geometric.transforms as T
 
 dataset_dir = "dataset/cylinder_flow/h5/"
-batch_size = 32
+batch_size = 50
 noise_std = 2e-2
-epochs = 1
+epochs = 10
 worker = 6
 
 print_batch = 1
@@ -24,7 +24,7 @@ simulator = Simulator(
     edge_input_size=3,
     device=device,
 )
-optimizer = torch.optim.AdamW(simulator.parameters(), lr=3e-4)
+optimizer = torch.optim.AdamW(simulator.parameters(), lr=1e-3)
 print("Optimizer initialized")
 
 
